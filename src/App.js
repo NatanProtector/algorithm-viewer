@@ -1,10 +1,9 @@
-
-function App() {
+import React from 'react';
+import ExperimentApp from './Components/Testing/TestingApp';
+const App = () => {
   return (
-    <div className="App">
-
-    </div>
-  );
-}
+      <ExperimentApp/>
+  )
+};
 
 export default App;
