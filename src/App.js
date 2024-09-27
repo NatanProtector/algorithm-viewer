@@ -1,8 +1,8 @@
 import React from 'react';
-import ExperimentApp from './Components/Testing/TestingApp';
+import ExperimentApp from './Components/Testing/ExperimentApp';
 const App = () => {
   return (
-      <ExperimentApp/>
+    <ExperimentApp/>
   )
 };
 

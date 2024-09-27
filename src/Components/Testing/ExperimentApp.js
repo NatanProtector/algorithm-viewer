@@ -1,8 +1,13 @@
 import React, { useState, useRef } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import Xarrow from "react-xarrows";
+import Node from '../Graph Components/Node';
+import { Button, Checkbox, FormControlLabel } from '@mui/material';
 
 const ExperimentApp = () => {
+
+  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+
   // Define animation properties and set state
   const [props, set] = useSpring(() => ({
     from: { r: 20 },
@@ -14,7 +19,13 @@ const ExperimentApp = () => {
   const [y1, setY1] = useState(null);
   const [x2, setX2] = useState(null);
   const [y2, setY2] = useState(null);
+
+  // States for drawing
   const [isDrawing, setIsDrawing] = useState(false);
+
+  // State for adding edge
+  const [addEdgeIsChecked, setAddEdgeIsChecked] = useState(false);
+
 
   // States for moving nodes
   const [nodeOneIsMoving, setNodeOneIsMoving] = useState(false);
@@ -23,21 +34,13 @@ const ExperimentApp = () => {
   const [node1_y, set_node1_y] = useState(400);
   const [node2_x, set_node2_x] = useState(500);
   const [node2_y, set_node2_y] = useState(500);
+  const [node3_x, set_node3_x] = useState(300);
+  const [node3_y, set_node3_y] = useState(300);
 
   const handleDragStart = (set_is_moving) => {
     set_is_moving(true);
   };
 
-  const handleDragEnd = (set_is_moving) => {
-    set_is_moving(false);
-  };
-
-  const handleDragMove = (e, set_node_x, set_node_y, isMoving) => {
-    if (isMoving) {
-      set_node_x(e.clientX);
-      set_node_y(e.clientY);
-    }
-  };
 
   React.useEffect(() => {
     const handleMouseMove = (e) => {
@@ -96,8 +99,7 @@ const ExperimentApp = () => {
 
   return (
     <>
-      <svg width="400" height="400" style={{ border: '1px solid black' }}>
-        {/* Clickable and Animated Circle */}
+      {/* <svg width="400" height="400" style={{ border: '1px solid black' }}>
         <animated.circle
           cx="200"
           cy="200"
@@ -120,48 +122,62 @@ const ExperimentApp = () => {
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
       >
-        {/* Line being drawn */}
         <line
           x1={x1} y1={y1} x2={x2} y2={y2}
           stroke="black"
           strokeWidth={2}
         />
-      </svg>
+      </svg> */}
 
-      <div
-        style={{
-          width: '30px',
-          height: '30px',
-          backgroundColor: 'red',
-          position: 'fixed',
-          top: `${node1_y}px`, // Corrected to match Y for top
-          left: `${node1_x}px`, // Corrected to match X for left
-          borderRadius: '50%',
-          cursor: 'move',
-        }}
-        id='div1'
-        onMouseDown={() => handleDragStart(setNodeOneIsMoving)}
+      <Button
+        variant="contained"
+      >
+        New Vertex
+      </Button>
+
+      <FormControlLabel control={
+        <Checkbox {...label}
+          checked={addEdgeIsChecked}
+          onChange={() => setAddEdgeIsChecked(!addEdgeIsChecked)}
+        />
+        
+      } label="Add Edge" />
+      
+
+      <Node
+        node_x={node1_x}
+        node_y={node1_y} 
+        set_node_x={set_node1_x}
+        set_node_y={set_node1_y}
+        color={'red'}
+        node_id={'div1'}
       />
 
-      <div
-        style={{
-          width: '30px',
-          height: '30px',
-          backgroundColor: 'blue',
-          position: 'fixed',
-          top: `${node2_y}px`,
-          left: `${node2_x}px`,
-          borderRadius: '50%',
-          cursor: 'move',
-        }}
-        id='div2'
-        onMouseDown={() => handleDragStart(setNodeTwoIsMoving)}
+      <Node
+        node_x={node2_x}
+        node_y={node2_y} 
+        set_node_x={set_node2_x}
+        set_node_y={set_node2_y}
+        color={'blue'}
+        node_id={'div2'}
+      />
+
+      <Node
+        node_x={node3_x}
+        node_y={node3_y} 
+        set_node_x={set_node3_x}
+        set_node_y={set_node3_y}
+        color={'green'}
+        node_id={'div3'}
       />
 
       {/* Xarrow connecting the circles by their IDs */}
       <Xarrow
         start="div1"
-        end="div2"
+        end="div3"
+        showTail={true}
+        startAnchor="auto"
+        endAnchor="auto"
       />
 
     </>
