@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
-const Node = ({ node_x, node_y, set_node_x, set_node_y, node_id, color }) => {
+const Node = ({ node_x, node_y, set_node_x_y, node_id, color, addEdgeIsChecked, onClick}) => {
+
+    const [isHighlighted, setIsHighlighted] = useState(false);
+    
     const [nodeIsMoving, setNodeIsMoving] = useState(false);
 
-    const handleDragStart = () => {
-        setNodeIsMoving(true);
+    const handleDragStart = (e) => {
+        if (!addEdgeIsChecked) setNodeIsMoving(true);
     };
 
     useEffect(() => {
         const handleMouseMove = (e) => {
             if (nodeIsMoving) {
-                set_node_x(e.clientX);
-                set_node_y(e.clientY);
+                set_node_x_y(e.clientX - 15, e.clientY - 15);
             }
         };
 
@@ -26,7 +28,15 @@ const Node = ({ node_x, node_y, set_node_x, set_node_y, node_id, color }) => {
             document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseup', handleMouseUp);
         };
-    }, [nodeIsMoving, set_node_x, set_node_y]);
+    }, [nodeIsMoving, set_node_x_y]);
+
+    const handleMouseEnter = () => {
+        if (addEdgeIsChecked) setIsHighlighted(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsHighlighted(false);
+    };
 
     return (
         <div
@@ -38,10 +48,14 @@ const Node = ({ node_x, node_y, set_node_x, set_node_y, node_id, color }) => {
                 top: `${node_y}px`,
                 left: `${node_x}px`,
                 borderRadius: '50%',
-                cursor: 'move',
+                cursor: isHighlighted?  'pointer' : 'move',
+                border: isHighlighted ? '2px solid black' : null,
             }}
             id={node_id}
             onMouseDown={handleDragStart}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onClick={onClick}
         />
     );
 };
