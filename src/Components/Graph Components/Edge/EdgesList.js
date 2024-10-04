@@ -1,4 +1,5 @@
 import Xarrow from "react-xarrows";
+
 const EdgesList = ({edges}) => {
 
     return (
@@ -6,6 +7,7 @@ const EdgesList = ({edges}) => {
             {
                 /* Xarrow for edges */
                 edges.map((edge) => (
+
                     <Xarrow
                         key={edge.id}
                         start={edge.from}

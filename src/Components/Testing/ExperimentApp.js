@@ -5,6 +5,7 @@ import useVertices from '../Graph Components/hooks/useVertices';
 import useLineDrawing from '../Graph Components/hooks/useLineDrawing';
 import VertexList from '../Graph Components/Vertex/VertexList';
 import EdgesList from '../Graph Components/Edge/EdgesList';
+import Arrow from '../Graph Components/Edge/Arrow';
 
 
 const ExperimentApp = () => {
@@ -46,10 +47,14 @@ const ExperimentApp = () => {
       
       {/* SVG container for drawing lines */}
       <svg width="800" height="600" style={{ border: '1px solid black' }}>
-        <line x1={x1} y1={y1} x2={x2} y2={y2} stroke="black" strokeWidth={2} />
+        <Arrow
+          startX={x1}
+          startY={y1}
+          endX={x2}
+          endY={y2}
+        />
       </svg>
-
-
+      
       <ControlPanel
         addVertex={addVertex}
         addEdgeIsChecked={addEdgeIsChecked}

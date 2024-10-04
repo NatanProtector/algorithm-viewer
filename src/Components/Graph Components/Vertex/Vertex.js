@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const Vertex = ({ vertex_x, vertex_y, set_vertex_x_y, vertex_id, color, addEdgeIsChecked, onClick }) => {
-
   const [isHighlighted, setIsHighlighted] = useState(false);
   const [vertexIsMoving, setVertexIsMoving] = useState(false);
 
@@ -12,7 +11,7 @@ const Vertex = ({ vertex_x, vertex_y, set_vertex_x_y, vertex_id, color, addEdgeI
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (vertexIsMoving) {
-        set_vertex_x_y(e.clientX - 15, e.clientY - 15);
+        set_vertex_x_y(e.clientX, e.clientY);  // Adjust for the center of the circle
       }
     };
 
@@ -38,24 +37,26 @@ const Vertex = ({ vertex_x, vertex_y, set_vertex_x_y, vertex_id, color, addEdgeI
   };
 
   return (
-    <div
-      style={{
-        width: '30px',
-        height: '30px',
-        backgroundColor: color,
-        position: 'fixed',
-        top: `${vertex_y}px`,
-        left: `${vertex_x}px`,
-        borderRadius: '50%',
-        cursor: isHighlighted ? 'pointer' : 'move',
-        border: isHighlighted ? '2px solid black' : null,
-      }}
-      id={vertex_id}
-      onMouseDown={handleDragStart}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={onClick}
-    />
+    <svg
+      width="100vw"
+      height="100vh"
+      style={{ position: 'fixed', top: 0, left: 0, pointerEvents: 'none' }} // Full-screen, fixed background
+    >
+      <circle
+        cx={vertex_x}
+        cy={vertex_y}
+        r="15"  // Circle radius
+        fill={color}
+        stroke={isHighlighted ? 'black' : 'none'}
+        strokeWidth={isHighlighted ? '2' : '0'}
+        style={{ cursor: isHighlighted ? 'pointer' : 'move', pointerEvents: 'auto' }} // Allow interaction with the circle
+        id={vertex_id}
+        onMouseDown={handleDragStart}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={onClick}
+      />
+    </svg>
   );
 };
 
