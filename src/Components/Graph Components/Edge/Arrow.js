@@ -1,10 +1,13 @@
 import React from 'react';
+import Xarrow from 'react-xarrows';
+
+const markerId = "arrowhead";
 
 const Arrow = ({ startX, startY, endX, endY }) => {
-  const markerId = "arrowhead";
+
 
   return (
-    <svg width="100%" height="100%">
+    <>
       <defs>
         <marker id={markerId} markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
           <polygon points="0 0, 10 3, 0 6" fill="black" />
@@ -19,8 +22,9 @@ const Arrow = ({ startX, startY, endX, endY }) => {
         strokeWidth="2" 
         markerEnd={`url(#${markerId})`} 
       />
-    </svg>
-  );
+    </>
+  )
+
 };
 
 export default Arrow;

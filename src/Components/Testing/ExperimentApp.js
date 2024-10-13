@@ -10,18 +10,11 @@ import Arrow from '../Graph Components/Edge/Arrow';
 
 const ExperimentApp = () => {
 
-  const {edges, addEdge, updateEdge} = useEdges([
-    { id: 'edge1', from: 'node1', to: 'node2', twoWay: true },
-    { id: 'edge2', from: 'node2', to: 'node3', twoWay: false}
-  ]);
-
-  const {vertices, addVertex, updateVertex} = useVertices(
-    [
-      { id: 'node1', x: 300, y: 300, color: 'red' },
-      { id: 'node2', x: 400, y: 400, color: 'blue' },
-      { id: 'node3', x: 500, y: 500, color: 'green' },
-    ]
-  );  
+  const graph = [
+    { index: 0, id: 'vertex0', x: 300, y: 300, color: 'red', adjacent: [1] },
+    { index: 1, id: 'vertex1', x: 300, y: 400, color: 'blue', adjacent: [0] },
+    { index: 2, id: 'vertex2', x: 400, y: 300, color: 'green', adjacent: [1] },
+  ]  
 
   const {
     x1,
@@ -31,8 +24,8 @@ const ExperimentApp = () => {
     handleSelectVertex,
     setAddEdgeIsChecked,
     addEdgeIsChecked,
-    cancelDrawing,
-  } = useLineDrawing(addEdge, edges, updateEdge);
+    cancelDrawing
+  } = useLineDrawing();
 
 
   const handleAddEdgeSelected = () => {
@@ -53,26 +46,29 @@ const ExperimentApp = () => {
           endX={x2}
           endY={y2}
         />
+
+      <EdgesList
+        graph={graph}
+        radius={25}
+      /> 
+      
+
+      <VertexList
+        graph={graph}
+        updateVertex={(id, x, y)=>{console.log("Updating vertex", id,"to", x, y);}}
+        addEdgeIsChecked={addEdgeIsChecked}
+        handleSelectVertex={handleSelectVertex}
+      />      
+
       </svg>
       
       <ControlPanel
-        addVertex={addVertex}
+        addVertex={(e)=>{console.log("Adding vertex")}}
         addEdgeIsChecked={addEdgeIsChecked}
         onAddEdgeChange={handleAddEdgeSelected}
         onReset={() => {console.log('Reset Clicked')}}
-      />
+      />    
 
-      <VertexList
-        vertices={vertices}
-        updateVertex={updateVertex}
-        addEdgeIsChecked={addEdgeIsChecked}
-        handleSelectVertex={handleSelectVertex}
-      />
-      
-      <EdgesList
-        edges={edges}
-      />
-      
     </div>
   );
 };
