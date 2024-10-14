@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 
-const useLineDrawing = () => {
+const useLineDrawing = (addEdge) => {
     const [x1, setX1] = useState(null);
     const [y1, setY1] = useState(null);
     const [x2, setX2] = useState(null);
     const [y2, setY2] = useState(null);
-    const [firstNodeId, setFirstNodeId] = useState(null);
+    const [firstNodeIndex, setFirstNodeIndex] = useState(null);
     const [isDrawing, setIsDrawing] = useState(false);
     const [addEdgeIsChecked, setAddEdgeIsChecked] = useState(false);
   
@@ -27,21 +27,21 @@ const useLineDrawing = () => {
   
     const handleSelectVertex = (e, vertex) => {
       if (addEdgeIsChecked) {
-        if (firstNodeId == null) {
+        if (firstNodeIndex == null) {
           const centerX = vertex.x;
           const centerY = vertex.y;
-          const vertexId = vertex.id;
+          const vertexIndex = vertex.index;
 
           setX1(centerX);
           setY1(centerY);
           setX2(centerX);
           setY2(centerY);
           setIsDrawing(true);
-          setFirstNodeId(vertexId);
+          setFirstNodeIndex(vertexIndex);
         } else {
           
-
           // Handle edge addition logic
+          addEdge(firstNodeIndex, vertex.index);
           
           cancelDrawing();
         }
@@ -54,7 +54,7 @@ const useLineDrawing = () => {
       setX2(null);
       setY2(null);
       setIsDrawing(false);
-      setFirstNodeId(null);
+      setFirstNodeIndex(null);
     };
   
     return {

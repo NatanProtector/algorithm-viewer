@@ -11,7 +11,7 @@ const EdgesList = ({ graph, radius }) => {
       {graph.map((vertex) => (
         vertex.adjacent.map((edge_index) => {
           const vertex_start = vertex;
-          const vertex_end = graph[edge_index];
+          const vertex_end = graph.find((v) => v.index === edge_index);
 
           // Ensure vertex_start and vertex_end are defined before rendering
           if (!vertex_start || !vertex_end)

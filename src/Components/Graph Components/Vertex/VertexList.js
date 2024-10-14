@@ -6,7 +6,7 @@ const VertexList = ({graph, updateVertex,addEdgeIsChecked, handleSelectVertex })
         <>
             {
                 graph.map((vertex) => {
-                const setVertexXY = (x, y) => updateVertex(vertex.id, x, y);
+                const setVertexXY = (x, y) => updateVertex(vertex.index, x, y);
                 return (
                     <Vertex
                         key={vertex.id}
