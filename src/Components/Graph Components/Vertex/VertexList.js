@@ -9,7 +9,7 @@ const VertexList = ({graph, updateVertex,addEdgeIsChecked, handleSelectVertex })
                 const setVertexXY = (x, y) => updateVertex(vertex.index, x, y);
                 return (
                     <Vertex
-                        key={vertex.id}
+                        key={vertex.index}
                         vertex_x={vertex.x}
                         vertex_y={vertex.y}
                         set_vertex_x_y={setVertexXY}
