@@ -6,12 +6,21 @@ import useSelect from '../Graph Components/hooks/useSelect';
 import DynamicControl from '../controllers/DynamicControl';
 import DynamicDisplay from '../controllers/DynamicDisplay'
 
-const containerStyle = {
+const headerStyles = {backgroundColor: 'red', width: '100%', height:'10%'}
+
+const appContainerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  height: '97vh'
+}
+
+const containerForControlAndViewStyle = {
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '90vh',
+  height: '80%',
   width: '100%',
 }
 
@@ -19,7 +28,7 @@ const ControlContainerStyle = {
   display: 'flex',
   flexDirection: 'column',
   border: '1px solid black',
-  width: '20%',
+  width: '10%',
   height: '100%'
 }
 
@@ -34,8 +43,14 @@ const algorithemDataSelectContainer = {
 
 const displayContainerStyle = {
   border: '1px solid black',
-  width: '80%',
+  width: '100%',
   height: '100%'
+}
+
+const containerForAlgorithemControls = {
+  border: '1px solid black',
+  width: '100%',
+  height: '10%'
 }
 
 const ExperimentApp = () => {
@@ -78,53 +93,68 @@ const ExperimentApp = () => {
   };
   
   return (
-    <div style={containerStyle}>
+    <div style={appContainerStyle}>
 
-      <div
-        style={displayContainerStyle}
-      >
-        <DynamicDisplay
-          algorithem={selectAlgorithem}
-          dataType={selectDataType}
-          x1={x1}
-          y1={y1}
-          x2={x2}
-          y2={y2}
-          graph={graph}
-          radius={25}
-          updateVertexLocation={updateVertexLocation}
-          handleSelectVertex={handleSelectVertex}
-          addEdgeIsChecked={addEdgeIsChecked}
-          addEdge={addEdge}
-        />
 
-      </div>
-      
-      <div style={ControlContainerStyle}>
+      <header style={headerStyles}>
 
-        <div style={algorithemDataSelectContainer}>
+      </header>
 
-          <TypeSelector
-            options={options}
-            selectedValue={selectDataType}
-            handleChangeToDataType={handleChangeToDataType}
+      <div style={containerForControlAndViewStyle}>
+
+        <div
+          style={displayContainerStyle}
+        >
+          <DynamicDisplay
             algorithem={selectAlgorithem}
-            handleChangeToAlgorithem={handleChangeToAlgorithem}
-          />
-
-        </div>
-
-        <div>
-          <DynamicControl
             dataType={selectDataType}
-            addVertex={addVertex}
+            x1={x1}
+            y1={y1}
+            x2={x2}
+            y2={y2}
+            graph={graph}
+            radius={25}
+            updateVertexLocation={updateVertexLocation}
+            handleSelectVertex={handleSelectVertex}
             addEdgeIsChecked={addEdgeIsChecked}
-            onAddEdgeChange={handleAddEdgeSelected}
-            onReset={() => {console.log('reset')}}
+            addEdge={addEdge}
           />
+
         </div>
         
-      </div>    
+        <div style={ControlContainerStyle}>
+
+          <div style={algorithemDataSelectContainer}>
+
+            <TypeSelector
+              options={options}
+              selectedValue={selectDataType}
+              handleChangeToDataType={handleChangeToDataType}
+              algorithem={selectAlgorithem}
+              handleChangeToAlgorithem={handleChangeToAlgorithem}
+            />
+
+          </div>
+
+          <div>
+            <DynamicControl
+              dataType={selectDataType}
+              addVertex={addVertex}
+              addEdgeIsChecked={addEdgeIsChecked}
+              onAddEdgeChange={handleAddEdgeSelected}
+              onReset={() => {console.log('reset')}}
+            />
+          </div>
+          
+        </div>    
+
+      </div>
+
+
+      {/** Section for controling the algorithem steps */}
+      <div style={containerForAlgorithemControls}>
+        
+      </div>
 
     </div>
   );
