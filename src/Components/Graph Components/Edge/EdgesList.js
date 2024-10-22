@@ -41,7 +41,7 @@ const EdgesList = ({ graph, radius }) => {
 
           return (
             <Arrow
-              key={`${vertex_start.id}-${vertex_end.id}`}
+              key={`${vertex_start.index}-${vertex_end.index}`}
               startX={x1}
               startY={y1}
               endX={new_x_end}

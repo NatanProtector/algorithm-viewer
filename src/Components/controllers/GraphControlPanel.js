@@ -8,7 +8,7 @@ const style = {
   height: '100%'
 };
 
-const ControlPanel = ({ addVertex, addEdgeIsChecked, onAddEdgeChange, onReset }) => {
+const GraphControlPanel = ({ addVertex, addEdgeIsChecked, onAddEdgeChange, onReset }) => {
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
   return (
@@ -26,4 +26,4 @@ const ControlPanel = ({ addVertex, addEdgeIsChecked, onAddEdgeChange, onReset })
   );
 };
 
-export default ControlPanel;
+export default GraphControlPanel;

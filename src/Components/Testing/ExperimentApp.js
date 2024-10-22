@@ -1,12 +1,10 @@
 import React from 'react';
-import ControlPanel from '../Graph Components/ControlPanel';
 import useLineDrawing from '../Graph Components/hooks/useLineDrawing';
-import VertexList from '../Graph Components/Vertex/VertexList';
-import EdgesList from '../Graph Components/Edge/EdgesList';
-import Arrow from '../Graph Components/Edge/Arrow';
 import useGraph from '../Graph Components/hooks/useGraph';
 import TypeSelector from '../Graph Components/components/TypeSelector';
 import useSelect from '../Graph Components/hooks/useSelect';
+import DynamicControl from '../controllers/DynamicControl';
+import DynamicDisplay from '../controllers/DynamicDisplay'
 
 const containerStyle = {
   display: 'flex',
@@ -34,7 +32,11 @@ const algorithemDataSelectContainer = {
   width: '100%'
 }
 
-const svgStyle = { border: '1px solid black', width: '100%', height: '100%' }
+const displayContainerStyle = {
+  border: '1px solid black',
+  width: '80%',
+  height: '100%'
+}
 
 const ExperimentApp = () => {
 
@@ -65,39 +67,38 @@ const ExperimentApp = () => {
     handleChangeToAlgorithem
   } = useSelect();
 
-  const handleAddEdgeSelected = () => {
-    if (addEdgeIsChecked) {
-      cancelDrawing();
-    }
-    setAddEdgeIsChecked(!addEdgeIsChecked);
+  const handleAddEdgeSelected = (e) => {
+      
+    setAddEdgeIsChecked((prevChecked) => {
+      if (prevChecked) {
+        cancelDrawing();
+      }
+      return !prevChecked;
+    });
   };
-
+  
   return (
     <div style={containerStyle}>
-      
-      {/* SVG container for drawing */}
-      <svg style={svgStyle}>
-        <Arrow
-          startX={x1}
-          startY={y1}
-          endX={x2}
-          endY={y2}
-        />
 
-        <EdgesList
+      <div
+        style={displayContainerStyle}
+      >
+        <DynamicDisplay
+          algorithem={selectAlgorithem}
+          dataType={selectDataType}
+          x1={x1}
+          y1={y1}
+          x2={x2}
+          y2={y2}
           graph={graph}
           radius={25}
-        /> 
-
-        <VertexList
-          graph={graph}
-          updateVertex={updateVertexLocation}
+          updateVertexLocation={updateVertexLocation}
+          handleSelectVertex={handleSelectVertex}
           addEdgeIsChecked={addEdgeIsChecked}
           addEdge={addEdge}
-          handleSelectVertex={handleSelectVertex}
-        />      
+        />
 
-      </svg>
+      </div>
       
       <div style={ControlContainerStyle}>
 
@@ -113,12 +114,16 @@ const ExperimentApp = () => {
 
         </div>
 
-        <ControlPanel
-          addVertex={addVertex}
-          addEdgeIsChecked={addEdgeIsChecked}
-          onAddEdgeChange={handleAddEdgeSelected}
-          onReset={() => {console.log('Reset Clicked')}}
-        />
+        <div>
+          <DynamicControl
+            dataType={selectDataType}
+            addVertex={addVertex}
+            addEdgeIsChecked={addEdgeIsChecked}
+            onAddEdgeChange={handleAddEdgeSelected}
+            onReset={() => {console.log('reset')}}
+          />
+        </div>
+        
       </div>    
 
     </div>
