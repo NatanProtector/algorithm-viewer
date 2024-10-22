@@ -14,17 +14,17 @@ const useSelect = () => {
         },
       ]
     
-    const [selectDataType, setSelectDataType] = useState('graph');
+    const [selectDataType, setSelectDataType] = useState('');
     const [selectAlgorithem, setSelectAlgorithem] = useState('');
 
     const handleChangeToDataType = (e) => {
     if (e.target.value !== selectDataType)
         setSelectAlgorithem('');
-    setSelectDataType(e.target.value);
+      setSelectDataType(e.target.value);
     }
 
     const handleChangeToAlgorithem = (e) => {
-        setSelectAlgorithem(e.target.value);
+      setSelectAlgorithem(e.target.value);
     }
 
     return {

@@ -10,6 +10,15 @@ const style = {
 
 const TypeSelector = ({options, selectedValue, handleChangeToDataType, algorithem ,handleChangeToAlgorithem}) => {
 
+    const getOptions = () => {
+        const option = options.find((option) => option.value === selectedValue)
+        if (option) {
+            return option.options
+        } else {
+            return []
+        }
+    }
+
     return (
         <div style={style}>
             <SelectComponent
@@ -21,7 +30,7 @@ const TypeSelector = ({options, selectedValue, handleChangeToDataType, algorithe
             />
             
             <SelectComponent
-                options={options.find((option) => option.value === selectedValue).options}
+                options={getOptions()}
                 label='Algorithem'
                 selectId="algorithem"
                 selectedValue={algorithem}
