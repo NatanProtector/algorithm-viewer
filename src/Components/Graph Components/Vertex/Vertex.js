@@ -11,7 +11,15 @@ const Vertex = ({ vertex_x, vertex_y, set_vertex_x_y, vertex_id, color, addEdgeI
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (vertexIsMoving) {
-        set_vertex_x_y(e.clientX, e.clientY);  // Adjust for the center of the circle
+      
+        const containerRect = document.querySelector('#svg-container').getBoundingClientRect();
+
+        // Calculating reletive positions of x and y based on offSet of the svg container and scrolling position.
+        const x = e.clientX + window.scrollX - containerRect.left;
+        const y = e.clientY + window.scrollY - containerRect.top;
+
+        set_vertex_x_y(x, y);
+        
       }
     };
 

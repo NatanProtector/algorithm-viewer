@@ -7,7 +7,7 @@ const svgStyle = { width: '100%', height: '100%' }
 const GraphDisplay = ({x1,y1,x2,y2,graph,radius,updateVertexLocation,handleSelectVertex ,addEdgeIsChecked,addEdge }) => {
     
     return (
-        <svg style={svgStyle}>
+        <svg id='svg-container' style={svgStyle}>
             <Arrow
                 startX={x1}
                 startY={y1}

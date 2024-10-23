@@ -6,7 +6,11 @@ import useSelect from '../Graph Components/hooks/useSelect';
 import DynamicControl from '../controllers/DynamicControl';
 import DynamicDisplay from '../controllers/DynamicDisplay'
 
-const headerStyles = {backgroundColor: 'red', width: '100%', height:'10%'}
+const headerStyles = {
+  backgroundColor: 'red',
+  width: '100%',
+  height:'10%'
+}
 
 const appContainerStyle = {
   display: 'flex',
@@ -28,7 +32,7 @@ const ControlContainerStyle = {
   display: 'flex',
   flexDirection: 'column',
   border: '1px solid black',
-  width: '10%',
+  width: '15%',
   height: '100%'
 }
 
@@ -43,7 +47,7 @@ const algorithemDataSelectContainer = {
 
 const displayContainerStyle = {
   border: '1px solid black',
-  width: '100%',
+  width: '85%',
   height: '100%'
 }
 
@@ -94,11 +98,12 @@ const ExperimentApp = () => {
   
   return (
     <div style={appContainerStyle}>
-
-
+      
+                  
       <header style={headerStyles}>
 
       </header>
+    
 
       <div style={containerForControlAndViewStyle}>
 
@@ -108,10 +113,7 @@ const ExperimentApp = () => {
           <DynamicDisplay
             algorithem={selectAlgorithem}
             dataType={selectDataType}
-            x1={x1}
-            y1={y1}
-            x2={x2}
-            y2={y2}
+            x1={x1} y1={y1} x2={x2} y2={y2}
             graph={graph}
             radius={25}
             updateVertexLocation={updateVertexLocation}
