@@ -11,8 +11,14 @@ const useLineDrawing = (addEdge) => {
   
     const handleMouseMove = (e) => {
       if (isDrawing && addEdgeIsChecked) {
-        setX2(e.clientX);
-        setY2(e.clientY);
+        const containerRect = document.querySelector('#svg-container').getBoundingClientRect();
+
+        // Calculating relative positions of x and y based on the offset of the SVG container and scrolling position.
+        const x = e.clientX + window.scrollX - containerRect.left;
+        const y = e.clientY + window.scrollY - containerRect.top;
+        
+        setX2(x);
+        setY2(y);
       }
     };
   

@@ -9,7 +9,7 @@ import DynamicDisplay from '../controllers/DynamicDisplay'
 const headerStyles = {
   backgroundColor: 'red',
   width: '100%',
-  height:'10%'
+  height:'15%'
 }
 
 const appContainerStyle = {
@@ -24,7 +24,7 @@ const containerForControlAndViewStyle = {
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '80%',
+  height: '70%',
   width: '100%',
 }
 
@@ -32,7 +32,7 @@ const ControlContainerStyle = {
   display: 'flex',
   flexDirection: 'column',
   border: '1px solid black',
-  width: '15%',
+  width: '20%',
   height: '100%'
 }
 
@@ -47,17 +47,17 @@ const algorithemDataSelectContainer = {
 
 const displayContainerStyle = {
   border: '1px solid black',
-  width: '85%',
+  width: '80%',
   height: '100%'
 }
 
 const containerForAlgorithemControls = {
   border: '1px solid black',
   width: '100%',
-  height: '10%'
+  height: '15%'
 }
 
-const ExperimentApp = () => {
+const AlgorithemViewerApp = () => {
 
   const graph_initial = [
     { index: 0, x: 300, y: 300, color: 'red', adjacent: [1] },
@@ -162,4 +162,4 @@ const ExperimentApp = () => {
   );
 };
 
-export default ExperimentApp;
+export default AlgorithemViewerApp;

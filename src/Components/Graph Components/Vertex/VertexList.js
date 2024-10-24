@@ -14,7 +14,7 @@ const VertexList = ({graph, updateVertex,addEdgeIsChecked, handleSelectVertex })
                         vertex_y={vertex.y}
                         set_vertex_x_y={setVertexXY}
                         color={vertex.color}
-                        vertex_id={vertex.id}
+                        vertex_index={vertex.index}
                         addEdgeIsChecked={addEdgeIsChecked}
                         onClick={(e) => handleSelectVertex(e,vertex)}
                     />

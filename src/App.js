@@ -1,8 +1,8 @@
 import React from 'react';
-import ExperimentApp from './Components/Testing/ExperimentApp';
+import AlgorithemViewerApp from './Components/display/AlgorithemViewerApp';
 const App = () => {
   return (
-    <ExperimentApp/>
+    <AlgorithemViewerApp/>
   )
 };
 

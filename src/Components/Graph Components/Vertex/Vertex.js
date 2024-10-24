@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Vertex = ({ vertex_x, vertex_y, set_vertex_x_y, vertex_id, color, addEdgeIsChecked, onClick }) => {
+const Vertex = ({ vertex_x, vertex_y, set_vertex_x_y, vertex_index, addEdgeIsChecked, onClick }) => {
   const [isHighlighted, setIsHighlighted] = useState(false);
   const [vertexIsMoving, setVertexIsMoving] = useState(false);
 
@@ -11,15 +11,13 @@ const Vertex = ({ vertex_x, vertex_y, set_vertex_x_y, vertex_id, color, addEdgeI
   useEffect(() => {
     const handleMouseMove = (e) => {
       if (vertexIsMoving) {
-      
         const containerRect = document.querySelector('#svg-container').getBoundingClientRect();
 
-        // Calculating reletive positions of x and y based on offSet of the svg container and scrolling position.
+        // Calculating relative positions of x and y based on the offset of the SVG container and scrolling position.
         const x = e.clientX + window.scrollX - containerRect.left;
         const y = e.clientY + window.scrollY - containerRect.top;
 
         set_vertex_x_y(x, y);
-        
       }
     };
 
@@ -45,20 +43,33 @@ const Vertex = ({ vertex_x, vertex_y, set_vertex_x_y, vertex_id, color, addEdgeI
   };
 
   return (
-    <circle
-      cx={vertex_x}
-      cy={vertex_y}
-      r="15"  // Circle radius
-      fill={color}
-      stroke={isHighlighted ? 'black' : 'none'}
-      strokeWidth={isHighlighted ? '2' : '0'}
-      style={{ cursor: isHighlighted ? 'pointer' : 'move', pointerEvents: 'auto' }} // Allow interaction with the circle
-      id={vertex_id}
-      onMouseDown={handleDragStart}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={onClick}
-    />
+    <g>
+      <circle
+        cx={vertex_x}
+        cy={vertex_y}
+        r="15"  // Circle radius
+        fill="blue"  // Always blue
+        stroke={isHighlighted ? 'black' : 'none'}
+        strokeWidth={isHighlighted ? '2' : '0'}
+        style={{ cursor: isHighlighted ? 'pointer' : 'move', pointerEvents: 'auto' }} // Allow interaction with the circle
+        id={vertex_index}
+        onMouseDown={handleDragStart}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={onClick}
+      />
+      <text
+        x={vertex_x}
+        y={vertex_y}
+        textAnchor="middle"  // Center the text horizontally
+        dominantBaseline="middle"  // Center the text vertically
+        fill="white"
+        fontSize="16"
+        pointerEvents="none"  // Prevent the text from interfering with interactions
+      >
+        {vertex_index + 1}
+      </text>
+    </g>
   );
 };
 
