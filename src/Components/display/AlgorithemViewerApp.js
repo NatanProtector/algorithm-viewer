@@ -4,7 +4,8 @@ import useGraph from '../Graph Components/hooks/useGraph';
 import TypeSelector from '../Graph Components/components/TypeSelector';
 import useSelect from '../Graph Components/hooks/useSelect';
 import DynamicControl from '../controllers/DynamicControl';
-import DynamicDisplay from '../controllers/DynamicDisplay'
+import DynamicDisplay from '../controllers/DynamicDisplay';
+import AlgorithemFlowControl from '../controllers/AlgorithemFlowControl';
 
 const headerStyles = {
   backgroundColor: 'red',
@@ -16,7 +17,7 @@ const appContainerStyle = {
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  height: '97vh'
+  height: '97vh',
 }
 
 const containerForControlAndViewStyle = {
@@ -140,6 +141,7 @@ const AlgorithemViewerApp = () => {
 
           <div>
             <DynamicControl
+              algorithem={selectAlgorithem}
               dataType={selectDataType}
               addVertex={addVertex}
               addEdgeIsChecked={addEdgeIsChecked}
@@ -155,7 +157,7 @@ const AlgorithemViewerApp = () => {
 
       {/** Section for controling the algorithem steps */}
       <div style={containerForAlgorithemControls}>
-        
+        <AlgorithemFlowControl/>
       </div>
 
     </div>
