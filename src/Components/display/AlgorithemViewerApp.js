@@ -3,9 +3,10 @@ import useLineDrawing from '../Graph Components/hooks/useLineDrawing';
 import useGraph from '../Graph Components/hooks/useGraph';
 import TypeSelector from '../Graph Components/components/TypeSelector';
 import useSelect from '../Graph Components/hooks/useSelect';
-import DynamicControl from '../controllers/DynamicControl';
-import DynamicDisplay from '../controllers/DynamicDisplay';
+import DynamicControl from '../controllers/DynamicDisplays/DynamicControl';
+import DynamicDisplay from '../controllers/DynamicDisplays/DynamicDisplay';
 import AlgorithemFlowControl from '../controllers/AlgorithemFlowControl';
+import { GraphControlContext } from "../controllers/GraphControlPanel/GraphControlContext";
 
 const headerStyles = {
   backgroundColor: 'red',
@@ -87,7 +88,7 @@ const AlgorithemViewerApp = () => {
     handleChangeToAlgorithem
   } = useSelect();
 
-  const handleAddEdgeSelected = (e) => {
+  const toggleAddEdgeChange = (e) => {
       
     setAddEdgeIsChecked((prevChecked) => {
       if (prevChecked) {
@@ -140,14 +141,21 @@ const AlgorithemViewerApp = () => {
           </div>
 
           <div>
-            <DynamicControl
-              algorithem={selectAlgorithem}
-              dataType={selectDataType}
-              addVertex={addVertex}
-              addEdgeIsChecked={addEdgeIsChecked}
-              onAddEdgeChange={handleAddEdgeSelected}
-              onReset={() => {console.log('reset')}}
-            />
+            <GraphControlContext.Provider
+              value={{
+                addVertex,
+                addEdgeIsChecked,
+                toggleAddEdgeChange
+              }}
+            >
+              <DynamicControl
+                algorithem={selectAlgorithem}
+                dataType={selectDataType}
+                // addVertex={addVertex}
+                // addEdgeIsChecked={addEdgeIsChecked}
+                // toggleAddEdgeChange={handleAddEdgeSelected}
+              />
+            </GraphControlContext.Provider>
           </div>
           
         </div>    

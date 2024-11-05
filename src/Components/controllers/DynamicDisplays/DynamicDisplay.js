@@ -1,4 +1,4 @@
-import GraphDisplay from '../Graph Components/components/GraphDisplay'
+import GraphDisplay from '../../Graph Components/components/GraphDisplay'
 
 const DynamicDisplay = ({dataType,algorithem,x1,y1,x2,y2,graph,radius,updateVertexLocation,handleSelectVertex ,addEdgeIsChecked,addEdge}) => {
     

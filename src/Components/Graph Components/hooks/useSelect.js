@@ -14,8 +14,8 @@ const useSelect = () => {
       },
     ]
   
-  const [selectDataType, setSelectDataType] = useState('');
-  const [selectAlgorithem, setSelectAlgorithem] = useState('');
+  const [selectDataType, setSelectDataType] = useState('graph');
+  const [selectAlgorithem, setSelectAlgorithem] = useState('BFS');
 
   const handleChangeToDataType = (e) => {
   if (e.target.value !== selectDataType)

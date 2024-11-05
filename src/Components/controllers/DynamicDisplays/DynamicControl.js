@@ -1,18 +1,13 @@
-import GraphControlPanel from "./GraphControlPanel";
+import GraphControlPanel from "../GraphControlPanel/GraphControlPanel";
 
-const DynamicControl = ({dataType, algorithem,addVertex, addEdgeIsChecked,onAddEdgeChange,onReset}) => {
+const DynamicControl = ({dataType, algorithem}) => {
 
     switch (dataType) {
         case 'graph':
             switch (algorithem) {
                 case 'BFS':
                     return (
-                        <GraphControlPanel
-                            addVertex={addVertex}
-                            addEdgeIsChecked={addEdgeIsChecked}
-                            onAddEdgeChange={onAddEdgeChange}
-                            onReset={onReset}
-                        />
+                        <GraphControlPanel/>
                     );
                 case 'DFS':
                     return (
