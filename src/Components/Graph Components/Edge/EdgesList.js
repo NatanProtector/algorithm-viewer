@@ -36,8 +36,8 @@ const EdgesList = ({ graph, radius }) => {
           const normalizedY = (y2 - y1) / length;
 
           // Calculate new end coordinates
-          const new_x_end = x2 - normalizedX * radius; // Shorten by 15 pixels
-          const new_y_end = y2 - normalizedY * radius; // Shorten by 15 pixels
+          const new_x_end = x2 - normalizedX * (radius + 5); // Shorten by raidus + 5 pixels
+          const new_y_end = y2 - normalizedY * (radius + 5); // Shorten by radius + 5 pixels
 
           return (
             <Arrow

@@ -8,6 +8,7 @@ const svgStyle = { width: '100%', height: '100%' }
 
 const GraphDisplay = () => {
     
+
     const {
         x1,y1,x2,y2,
         
@@ -38,6 +39,7 @@ const GraphDisplay = () => {
                 addEdgeIsChecked={addEdgeIsChecked}
                 addEdge={addEdge}
                 handleSelectVertex={handleSelectVertex}
+                radius={radius}
             />      
 
         </svg>

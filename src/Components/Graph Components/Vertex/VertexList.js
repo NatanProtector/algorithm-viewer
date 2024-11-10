@@ -1,6 +1,6 @@
 import Vertex from './Vertex';
 
-const VertexList = ({graph, updateVertex,addEdgeIsChecked, handleSelectVertex }) => {
+const VertexList = ({graph, updateVertex,addEdgeIsChecked, handleSelectVertex, radius }) => {
 
     return (
         <>
@@ -17,6 +17,7 @@ const VertexList = ({graph, updateVertex,addEdgeIsChecked, handleSelectVertex })
                         vertex_index={vertex.index}
                         addEdgeIsChecked={addEdgeIsChecked}
                         onClick={(e) => handleSelectVertex(e,vertex)}
+                        radius={radius}
                     />
                 );
                 })

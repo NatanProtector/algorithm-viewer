@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Vertex = ({ vertex_x, vertex_y, set_vertex_x_y, vertex_index, addEdgeIsChecked, onClick }) => {
+const Vertex = ({ vertex_x, vertex_y, set_vertex_x_y, vertex_index, addEdgeIsChecked, onClick, radius }) => {
   const [isHighlighted, setIsHighlighted] = useState(false);
   const [vertexIsMoving, setVertexIsMoving] = useState(false);
 
@@ -47,7 +47,7 @@ const Vertex = ({ vertex_x, vertex_y, set_vertex_x_y, vertex_index, addEdgeIsChe
       <circle
         cx={vertex_x}
         cy={vertex_y}
-        r="15"  // Circle radius
+        r={`${radius}`}  // Circle radius
         fill="blue"  // Always blue
         stroke={isHighlighted ? 'black' : 'none'}
         strokeWidth={isHighlighted ? '2' : '0'}

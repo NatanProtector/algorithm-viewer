@@ -61,6 +61,8 @@ const containerForAlgorithemControls = {
 
 const AlgorithemViewerApp = () => {
 
+  const radius = 15;
+
   const graph_initial = [
     { index: 0, x: 300, y: 300, color: 'red', adjacent: [1] },
     { index: 1, x: 300, y: 400, color: 'blue', adjacent: [0] },
@@ -127,12 +129,20 @@ const AlgorithemViewerApp = () => {
           <ContextProvider.Provider
             value={{
               x1,y1,x2,y2,
-              graph,
-              radius: 25,
+              graph,radius,
               updateVertexLocation,
               handleSelectVertex,
               addEdgeIsChecked,
-              addEdge
+              addEdge,
+
+              // x1_remove,
+              // y1_remove,
+              // x2_remove,
+              // y2_remove,
+              // handleSelectVertexForEdgeRemoval,
+              // setMayUseLineForEdgeRemoval,
+              // mayUseLineForRemoval,
+              // cancelDrawingForEdgeRemoval
           }}
           >
             <DynamicDisplay
