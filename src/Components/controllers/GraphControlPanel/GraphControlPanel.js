@@ -1,5 +1,5 @@
 import { Button, Checkbox, FormControlLabel } from '@mui/material';
-import { GraphControlContext } from './GraphControlContext';
+import { ContextProvider } from './ContextProvider';
 import {useContext} from 'react';
 
 const style = {
@@ -17,7 +17,7 @@ const GraphControlPanel = () => {
     addVertex,
     addEdgeIsChecked,
     toggleAddEdgeChange
-  } = useContext(GraphControlContext);
+  } = useContext(ContextProvider);
 
   return (
     <div className="control-panel" style={style}>

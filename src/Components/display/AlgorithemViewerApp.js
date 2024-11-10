@@ -6,7 +6,7 @@ import useSelect from '../Graph Components/hooks/useSelect';
 import DynamicControl from '../controllers/DynamicDisplays/DynamicControl';
 import DynamicDisplay from '../controllers/DynamicDisplays/DynamicDisplay';
 import AlgorithemFlowControl from '../controllers/AlgorithemFlowControl';
-import { GraphControlContext } from "../controllers/GraphControlPanel/GraphControlContext";
+import { ContextProvider } from "../controllers/GraphControlPanel/ContextProvider";
 
 const headerStyles = {
   backgroundColor: 'red',
@@ -123,18 +123,24 @@ const AlgorithemViewerApp = () => {
         <div
           style={displayContainerStyle}
         >
-          
-          <DynamicDisplay
-            algorithem={selectAlgorithem}
-            dataType={selectDataType}
-            x1={x1} y1={y1} x2={x2} y2={y2}
-            graph={graph}
-            radius={25}
-            updateVertexLocation={updateVertexLocation}
-            handleSelectVertex={handleSelectVertex}
-            addEdgeIsChecked={addEdgeIsChecked}
-            addEdge={addEdge}
-          />
+
+          <ContextProvider.Provider
+            value={{
+              x1,y1,x2,y2,
+              graph,
+              radius: 25,
+              updateVertexLocation,
+              handleSelectVertex,
+              addEdgeIsChecked,
+              addEdge
+          }}
+          >
+            <DynamicDisplay
+              algorithem = {selectAlgorithem}
+              dataType = {selectDataType}
+            />
+
+          </ContextProvider.Provider>
 
         </div>
         
@@ -153,7 +159,7 @@ const AlgorithemViewerApp = () => {
           </div>
 
           <div>
-            <GraphControlContext.Provider
+            <ContextProvider.Provider
               value={{
                 addVertex,
                 addEdgeIsChecked,
@@ -167,7 +173,7 @@ const AlgorithemViewerApp = () => {
                 // addEdgeIsChecked={addEdgeIsChecked}
                 // toggleAddEdgeChange={handleAddEdgeSelected}
               />
-            </GraphControlContext.Provider>
+            </ContextProvider.Provider>
           </div>
           
         </div>    
