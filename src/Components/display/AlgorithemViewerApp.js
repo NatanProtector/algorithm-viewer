@@ -75,10 +75,21 @@ const AlgorithemViewerApp = () => {
     x2,
     y2,
     handleSelectVertex,
-    setAddEdgeIsChecked,
-    addEdgeIsChecked,
+    setMayUseLine: setAddEdgeIsChecked,
+    mayUseLine: addEdgeIsChecked,
     cancelDrawing
   } = useLineDrawing(addEdge);
+
+  const {
+    x1: x1_remove,
+    y1: y1_remove,
+    x2: x2_remove,
+    y2: y2_remove,
+    handleSelectVertex: handleSelectVertexForEdgeRemoval,
+    setMayUseLine: setMayUseLineForEdgeRemoval,
+    mayUseLine: mayUseLineForRemoval,
+    cancelDrawing: cancelDrawingForEdgeRemoval
+  } = useLineDrawing(removeEdge);
 
   const {
     options,
@@ -112,6 +123,7 @@ const AlgorithemViewerApp = () => {
         <div
           style={displayContainerStyle}
         >
+          
           <DynamicDisplay
             algorithem={selectAlgorithem}
             dataType={selectDataType}

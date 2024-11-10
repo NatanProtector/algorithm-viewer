@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Slider, FormControl, FormLabel, Stack, Box, Typography } from '@mui/material';
+import { Button, Slider, FormControl, FormLabel, Stack, Box } from '@mui/material';
 
 const AlgorithemFlowControlStyle = {
     display: 'flex',

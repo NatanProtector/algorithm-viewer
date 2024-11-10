@@ -77,7 +77,7 @@ const addVertex = () => {
 
       if (fromVertex && toVertex) {
         fromVertex.adjacent = fromVertex.adjacent.filter((adj) => adj !== to);
-        toVertex.adjacent = toVertex.adjacent.filter((adj) => adj !== from);
+
       }
       return updatedGraph;
     });
