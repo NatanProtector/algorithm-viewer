@@ -70,10 +70,4 @@ While the app is currently on hold as I’ve returned to college, I plan to use 
 
 ---
 
-## License  
-
-This project is open source and available under the MIT License.  
-
----
-
 If you'd like to contribute or have any suggestions, feel free to reach out!
