@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Algorithm Viewer  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Algorithm Viewer is an interactive application designed to visualize famous computer science algorithms such as Dijkstra, Depth-First Search (DFS), and Breadth-First Search (BFS). The app features an intuitive interface that lets users apply these algorithms to custom-built data structures, making it both educational and engaging.  
 
-## Available Scripts
+This project showcases my frontend development skills and experiments with clean coding practices, adhering to the **SOLID methodology**.  
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Features  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🎯 Algorithm Visualization  
+- Visualize classic algorithms like:  
+  - **Dijkstra**: Find the shortest path in weighted graphs.  
+  - **DFS**: Explore nodes deeply in a depth-wise manner.  
+  - **BFS**: Traverse nodes level by level.  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🛠 Custom Data Structures  
+- Build and customize your own data structures.  
+- Apply algorithms dynamically and observe their operations in real-time.  
 
-### `npm test`
+### 🖥 Clean, User-Friendly Interface  
+- Designed for simplicity, making it easy to explore complex concepts.  
+- Interactive controls for seamless user experience.  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Motivation  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🌟 Experimentation  
+The primary focus during development was to:  
+- Explore **frontend architectures** and organize complex features.  
+- Practice writing **clean, maintainable code** using **SOLID principles**.  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 📚 Educational Utility  
+This app doubles as a tool for students and educators to understand and teach algorithms through hands-on interaction.  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Future Plans  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+While the app is currently on hold as I’ve returned to college, I plan to use it in the upcoming semester to explore **DevOps concepts**. My focus will include:  
+- Implementing **CI/CD pipelines** for efficient testing and deployment.  
+- Integrating modern DevOps practices into the app's workflow.  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Technologies Used  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Frontend**: React.js with custom hooks and component-driven architecture.  
+- **State Management**: Redux for predictable and scalable state management.  
+- **Styling**: CSS modules for maintainable and modular styles.  
+- **Development Practices**: SOLID methodology and clean code principles.  
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## How to Use  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **Build Your Data Structure**: Use the interface to create nodes and connections.  
+2. **Choose an Algorithm**: Select one of the available algorithms to run on the structure.  
+3. **Visualize**: Watch the step-by-step execution and gain insights into its workings.  
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Development Status  
 
-### Analyzing the Bundle Size
+- **Current Status**:  
+  - Development paused while I focus on college studies.  
+- **Next Phase**:  
+  - DevOps integration in the next semester to implement CI/CD pipelines.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## License  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This project is open source and available under the MIT License.  
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you'd like to contribute or have any suggestions, feel free to reach out!
